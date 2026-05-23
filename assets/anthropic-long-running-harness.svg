@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Anthropic Long-running Agent Harness 架构</title>
+  <desc id="desc">Anthropic 的长任务 Harness 通过 Planner、Generator、Evaluator、Session Artifacts 与 Sandbox，把大任务拆成可交接、可验收、可恢复的增量循环</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.36"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,5 L0,10 z" fill="#f4f4f4"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,5 L0,10 z" fill="#60d36e"/>
+    </marker>
+    <marker id="arrow-yellow" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,5 L0,10 z" fill="#f0d84f"/>
+    </marker>
+  </defs>
+  <image href="harness-bg.png" x="0" y="0" width="1600" height="1040" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1600" height="1040" fill="#0b0f12" opacity="0.34"/>
+  <g font-family="Inter, PingFang SC, Microsoft YaHei, Arial, sans-serif">
+    <text x="800" y="78" text-anchor="middle" font-size="48" font-weight="760" fill="#ffffff">Anthropic：Long-running Agent Harness</text>
+    <text x="800" y="122" text-anchor="middle" font-size="24" fill="#d8e0e7">把“长任务失忆”改造成可交接、可验收、可恢复的增量开发流水线</text>
+
+    <rect x="72" y="208" width="300" height="170" rx="24" fill="#08710f" filter="url(#shadow)"/>
+    <text x="222" y="272" text-anchor="middle" font-size="38" font-weight="760" fill="#ffffff">Planner</text>
+    <text x="222" y="322" text-anchor="middle" font-size="22" fill="#e8ffef">需求拆解</text>
+    <text x="222" y="354" text-anchor="middle" font-size="22" fill="#e8ffef">功能清单与环境初始化</text>
+
+    <rect x="650" y="208" width="300" height="170" rx="24" fill="#4320a1" filter="url(#shadow)"/>
+    <text x="800" y="272" text-anchor="middle" font-size="38" font-weight="760" fill="#ffffff">Generator</text>
+    <text x="800" y="322" text-anchor="middle" font-size="22" fill="#f1edff">选择一个功能点</text>
+    <text x="800" y="354" text-anchor="middle" font-size="22" fill="#f1edff">生成代码并提交结果</text>
+
+    <rect x="1228" y="208" width="300" height="170" rx="24" fill="#075281" filter="url(#shadow)"/>
+    <text x="1378" y="272" text-anchor="middle" font-size="38" font-weight="760" fill="#ffffff">Evaluator</text>
+    <text x="1378" y="322" text-anchor="middle" font-size="22" fill="#e8f7ff">审查验收标准</text>
+    <text x="1378" y="354" text-anchor="middle" font-size="22" fill="#e8f7ff">评估实现与反馈</text>
+
+    <rect x="470" y="492" width="660" height="205" rx="28" fill="#121a22" stroke="#5f93ff" stroke-width="3" filter="url(#shadow)"/>
+    <text x="800" y="548" text-anchor="middle" font-size="34" font-weight="760" fill="#ffffff">Session Artifacts</text>
+    <text x="800" y="595" text-anchor="middle" font-size="23" fill="#e5efff">init.sh · feature_list.json · progress log · git history</text>
+    <text x="800" y="632" text-anchor="middle" font-size="23" fill="#e5efff">把上下文窗口里的隐性状态，转成下一轮可读取的显式事实</text>
+    <text x="800" y="668" text-anchor="middle" font-size="23" fill="#e5efff">每个会话结束时留下“干净可接手”的工程状态</text>
+
+    <rect x="470" y="795" width="660" height="130" rx="24" fill="#171717" stroke="#f0d84f" stroke-width="3" stroke-dasharray="8 8" filter="url(#shadow)"/>
+    <text x="800" y="848" text-anchor="middle" font-size="32" font-weight="740" fill="#ffffff">Sandbox / Runtime</text>
+    <text x="800" y="894" text-anchor="middle" font-size="23" fill="#fff8d5">安装依赖、运行代码、执行测试、浏览器验证、隔离副作用</text>
+
+    <path d="M372 292 C480 292 545 292 650 292" fill="none" stroke="#f4f4f4" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="512" y="265" text-anchor="middle" font-size="24" fill="#ffffff">功能列表</text>
+
+    <path d="M950 282 C1048 260 1134 260 1228 282" fill="none" stroke="#60d36e" stroke-width="5" marker-end="url(#arrow-green)"/>
+    <text x="1088" y="242" text-anchor="middle" font-size="24" fill="#79df84">验收标准</text>
+
+    <path d="M1228 330 C1134 392 1048 392 950 330" fill="none" stroke="#60d36e" stroke-width="5" marker-end="url(#arrow-green)" stroke-dasharray="10 10"/>
+    <text x="1088" y="406" text-anchor="middle" font-size="24" fill="#79df84">修改建议</text>
+
+    <path d="M800 378 L800 492" fill="none" stroke="#f4f4f4" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="854" y="440" font-size="23" fill="#ffffff">提交进度</text>
+
+    <path d="M1130 592 C1255 590 1330 510 1378 378" fill="none" stroke="#f4f4f4" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="1288" y="552" text-anchor="middle" font-size="23" fill="#ffffff">读取状态</text>
+
+    <path d="M650 330 C548 402 500 456 470 560" fill="none" stroke="#f4f4f4" stroke-width="5" marker-end="url(#arrow)"/>
+    <text x="548" y="444" text-anchor="middle" font-size="23" fill="#ffffff">恢复上下文</text>
+
+    <path d="M800 697 L800 795" fill="none" stroke="#f0d84f" stroke-width="5" marker-end="url(#arrow-yellow)"/>
+    <text x="858" y="756" font-size="23" fill="#fff4c2">真实执行</text>
+
+    <path d="M1130 860 C1302 824 1392 680 1378 378" fill="none" stroke="#f0d84f" stroke-width="5" marker-end="url(#arrow-yellow)" stroke-dasharray="9 9"/>
+    <text x="1370" y="735" text-anchor="middle" font-size="23" fill="#fff4c2">评估反馈</text>
+
+    <path d="M470 860 C266 826 176 625 222 378" fill="none" stroke="#5f93ff" stroke-width="5" marker-end="url(#arrow)" stroke-dasharray="9 9"/>
+    <text x="218" y="650" text-anchor="middle" font-size="23" fill="#dce8ff">下一轮继续</text>
+
+    <text x="800" y="985" text-anchor="middle" font-size="24" fill="#d8e0e7">核心判断：长任务可靠性来自显式状态、阶段性验收、外部评估和隔离执行，而不是更长 Prompt</text>
+  </g>
+</svg>
