@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">OpenAI Agent-first Harness 架构</title>
+  <desc id="desc">OpenAI 的 Harness Engineering 把人类意图、Codex 执行、仓库知识、应用可观测性、机械护栏和技术债清理连接成一个持续改进闭环</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.36"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,5 L0,10 z" fill="#f4f4f4"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L14,5 L0,10 z" fill="#47d16c"/>
+    </marker>
+  </defs>
+  <image href="harness-bg.png" x="0" y="0" width="1600" height="980" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1600" height="980" fill="#0b0f12" opacity="0.34"/>
+  <g font-family="Inter, PingFang SC, Microsoft YaHei, Arial, sans-serif">
+    <text x="800" y="78" text-anchor="middle" font-size="48" font-weight="760" fill="#ffffff">OpenAI：Agent-first Harness</text>
+    <text x="800" y="122" text-anchor="middle" font-size="24" fill="#d8e0e7">把“写代码”变成“设计 Codex 可执行、可观测、可清理的工程环境”</text>
+
+    <rect x="585" y="238" width="430" height="220" rx="28" fill="#0f6a38" filter="url(#shadow)"/>
+    <text x="800" y="318" text-anchor="middle" font-size="44" font-weight="760" fill="#ffffff">Codex Agent</text>
+    <text x="800" y="368" text-anchor="middle" font-size="24" fill="#e8ffef">读仓库、改代码、运行验证</text>
+    <text x="800" y="405" text-anchor="middle" font-size="24" fill="#e8ffef">发起 PR、吸收反馈</text>
+
+    <rect x="90" y="214" width="380" height="270" rx="24" fill="#14384f" opacity="0.96" filter="url(#shadow)"/>
+    <text x="280" y="270" text-anchor="middle" font-size="34" font-weight="740" fill="#ffffff">仓库即上下文</text>
+    <text x="280" y="323" text-anchor="middle" font-size="22" fill="#dff3ff">AGENTS.md 作为入口</text>
+    <text x="280" y="360" text-anchor="middle" font-size="22" fill="#dff3ff">docs/ 承载架构与规格</text>
+    <text x="280" y="397" text-anchor="middle" font-size="22" fill="#dff3ff">计划、决策、技术债入库</text>
+    <text x="280" y="434" text-anchor="middle" font-size="22" fill="#dff3ff">减少隐性上下文</text>
+
+    <rect x="1130" y="214" width="380" height="270" rx="24" fill="#4b2a7d" opacity="0.96" filter="url(#shadow)"/>
+    <text x="1320" y="270" text-anchor="middle" font-size="34" font-weight="740" fill="#ffffff">应用对 Agent 可读</text>
+    <text x="1320" y="323" text-anchor="middle" font-size="22" fill="#f2ebff">独立工作区实例</text>
+    <text x="1320" y="360" text-anchor="middle" font-size="22" fill="#f2ebff">浏览器自动化</text>
+    <text x="1320" y="397" text-anchor="middle" font-size="22" fill="#f2ebff">DOM、截图、日志</text>
+    <text x="1320" y="434" text-anchor="middle" font-size="22" fill="#f2ebff">指标与 Trace</text>
+
+    <rect x="90" y="620" width="380" height="230" rx="24" fill="#65420f" opacity="0.96" filter="url(#shadow)"/>
+    <text x="280" y="676" text-anchor="middle" font-size="34" font-weight="740" fill="#ffffff">机械护栏</text>
+    <text x="280" y="729" text-anchor="middle" font-size="22" fill="#fff4da">Lint、类型、CI</text>
+    <text x="280" y="766" text-anchor="middle" font-size="22" fill="#fff4da">架构边界测试</text>
+    <text x="280" y="803" text-anchor="middle" font-size="22" fill="#fff4da">错误信息可指导修复</text>
+
+    <rect x="1130" y="620" width="380" height="230" rx="24" fill="#6c1f2c" opacity="0.96" filter="url(#shadow)"/>
+    <text x="1320" y="676" text-anchor="middle" font-size="34" font-weight="740" fill="#ffffff">技术债清理</text>
+    <text x="1320" y="729" text-anchor="middle" font-size="22" fill="#ffe7ec">坏模式进入规则</text>
+    <text x="1320" y="766" text-anchor="middle" font-size="22" fill="#ffe7ec">后台 Agent 定期扫描</text>
+    <text x="1320" y="803" text-anchor="middle" font-size="22" fill="#ffe7ec">重构、归档、收敛熵</text>
+
+    <rect x="585" y="658" width="430" height="144" rx="24" fill="#101820" stroke="#47d16c" stroke-width="3" filter="url(#shadow)"/>
+    <text x="800" y="715" text-anchor="middle" font-size="30" font-weight="740" fill="#ffffff">人类角色变化</text>
+    <text x="800" y="760" text-anchor="middle" font-size="22" fill="#dfffea">从手写代码 → 设计环境、反馈与边界</text>
+
+    <path d="M470 330 C520 316 548 315 585 326" fill="none" stroke="#f4f4f4" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1015 326 C1054 314 1082 316 1130 330" fill="none" stroke="#f4f4f4" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M665 458 C535 520 410 566 315 620" fill="none" stroke="#f4f4f4" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M935 458 C1064 520 1190 566 1284 620" fill="none" stroke="#f4f4f4" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M1130 754 C1015 820 642 826 470 754" fill="none" stroke="#47d16c" stroke-width="4" marker-end="url(#arrow-green)" stroke-dasharray="10 10"/>
+    <path d="M585 730 C540 729 508 729 470 730" fill="none" stroke="#47d16c" stroke-width="4" marker-end="url(#arrow-green)"/>
+
+    <text x="800" y="920" text-anchor="middle" font-size="24" fill="#d8e0e7">核心判断：模型能力越强，工程瓶颈越转向 Harness 的上下文、观测、规则和治理</text>
+  </g>
+</svg>
