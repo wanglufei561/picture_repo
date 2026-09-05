@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1200" viewBox="0 0 2000 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 工程组件与运行链全景</title>
+  <desc id="desc">主运行链从 Context 经 Model、Tool Policy、Executor 和 Runtime 作用于 Environment，Control、Verification、Recovery 与 State 位于中部支撑层，Governance 贯穿整体；颜色区分系统边界、模型认知、Harness 编排、规则与验证门禁、运行状态和执行环境六类组件角色</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+    </marker>
+    <marker id="state-arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0891B2"/>
+    </marker>
+    <style>
+      .title{font:600 30px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#2F2B42}
+      .group{font:600 20px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+      .lane{font:400 15px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#7C8AA0;letter-spacing:1px}
+      .label{font:600 19px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .small{font:400 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#64748B}
+      .legend-title{font:600 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+      .legend{font:400 15px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#526075}
+      .edge{fill:none;stroke:#64748B;stroke-width:2.6;marker-end:url(#arrow)}
+      .soft{fill:none;stroke:#94A3B8;stroke-width:2;stroke-dasharray:8 8;marker-end:url(#arrow)}
+      .state-edge{fill:none;stroke:#0891B2;stroke-width:2.6;marker-end:url(#state-arrow)}
+      .edge-halo{fill:none;stroke:#F7F5FF;stroke-width:10;stroke-linecap:round}
+      .role-boundary{fill:#DBEAFE;stroke:#3B82F6;stroke-width:2}
+      .role-model{fill:#FFE4CC;stroke:#EA580C;stroke-width:2}
+      .role-harness{fill:#EDE9FE;stroke:#7C3AED;stroke-width:2}
+      .role-gate{fill:#FFF4B8;stroke:#CA8A04;stroke-width:2}
+      .role-gate-region{fill:#FFFBEB;stroke:#CA8A04;stroke-width:2}
+      .role-state{fill:#CFFAFE;stroke:#0891B2;stroke-width:2}
+      .role-environment{fill:#DCFCE7;stroke:#16A34A;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect width="2000" height="1200" fill="#FFFFFF"/>
+  <text x="1000" y="52" text-anchor="middle" class="title">Agent 工程组件与运行链全景</text>
+
+  <rect x="285" y="82" width="1335" height="900" rx="30" fill="#FAFAFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="320" y="122" class="group">Agent System</text>
+
+  <rect x="340" y="240" width="1225" height="670" rx="26" fill="#F7F5FF" stroke="#C4B5FD" stroke-width="2"/>
+  <text x="370" y="278" class="group">Harness 工程承载</text>
+  <text x="370" y="313" class="lane">主运行链</text>
+  <text x="650" y="590" class="lane">控制、验证、恢复与状态</text>
+
+  <!-- 左侧输入与输出 -->
+  <rect x="10" y="325" width="200" height="104" rx="18" class="role-boundary"/>
+  <text x="110" y="365" text-anchor="middle" class="label">信息来源</text>
+  <text x="110" y="396" text-anchor="middle" class="small">Memory · Retrieval</text>
+
+  <rect x="10" y="525" width="200" height="104" rx="18" class="role-boundary"/>
+  <text x="110" y="565" text-anchor="middle" class="label">任务契约</text>
+  <text x="110" y="596" text-anchor="middle" class="small">目标 · 验收 · 预算 · 终态</text>
+
+  <rect x="10" y="725" width="200" height="104" rx="18" class="role-boundary"/>
+  <text x="110" y="765" text-anchor="middle" class="label">任务结果</text>
+  <text x="110" y="796" text-anchor="middle" class="small">继续 · 完成 · 失败 · 交还</text>
+
+  <!-- 主运行链 -->
+  <rect x="385" y="335" width="230" height="108" rx="18" class="role-harness"/>
+  <text x="500" y="377" text-anchor="middle" class="label">Context Builder</text>
+  <text x="500" y="408" text-anchor="middle" class="small">选择 · 排序 · 压缩</text>
+
+  <rect x="760" y="112" width="250" height="102" rx="18" class="role-model"/>
+  <text x="885" y="152" text-anchor="middle" class="label">Model</text>
+  <text x="885" y="183" text-anchor="middle" class="small">理解 · 推理 · 动作提议</text>
+
+  <rect x="980" y="335" width="230" height="108" rx="18" class="role-gate"/>
+  <text x="1095" y="377" text-anchor="middle" class="label">Tool Policy</text>
+  <text x="1095" y="408" text-anchor="middle" class="small">Schema · 权限 · 风险</text>
+
+  <rect x="1270" y="335" width="190" height="108" rx="18" class="role-harness"/>
+  <text x="1365" y="377" text-anchor="middle" class="label">Executor</text>
+  <text x="1365" y="408" text-anchor="middle" class="small">调用适配</text>
+
+  <rect x="1690" y="335" width="265" height="108" rx="18" class="role-environment"/>
+  <text x="1822" y="377" text-anchor="middle" class="label">Runtime / Sandbox</text>
+  <text x="1822" y="408" text-anchor="middle" class="small">代码、命令与浏览器运行域</text>
+
+  <rect x="1690" y="620" width="265" height="134" rx="18" class="role-environment"/>
+  <text x="1822" y="662" text-anchor="middle" class="label">Environment</text>
+  <text x="1822" y="693" text-anchor="middle" class="small">文件 · 进程 · 数据</text>
+  <text x="1822" y="724" text-anchor="middle" class="small">网页 · 业务系统</text>
+
+  <!-- 中部支撑层 -->
+  <rect x="385" y="620" width="230" height="108" rx="18" class="role-harness"/>
+  <text x="500" y="662" text-anchor="middle" class="label">Control</text>
+  <text x="500" y="693" text-anchor="middle" class="small">推进 · 暂停 · 恢复 · 终止</text>
+
+  <rect x="675" y="620" width="230" height="108" rx="18" class="role-gate"/>
+  <text x="790" y="662" text-anchor="middle" class="label">Verification</text>
+  <text x="790" y="693" text-anchor="middle" class="small">测试 · Eval · 证据</text>
+
+  <rect x="965" y="620" width="260" height="108" rx="18" class="role-harness"/>
+  <text x="1095" y="662" text-anchor="middle" class="label">Guardrail / Recovery</text>
+  <text x="1095" y="693" text-anchor="middle" class="small">上限 · 重试 · 降级 · 取消</text>
+
+  <rect x="1280" y="620" width="230" height="108" rx="18" class="role-state"/>
+  <text x="1395" y="662" text-anchor="middle" class="label">State / Session</text>
+  <text x="1395" y="693" text-anchor="middle" class="small">运行事实 · 持久化</text>
+
+  <!-- 左侧直连 -->
+  <path d="M210 377 H385" class="edge"/>
+  <path d="M210 577 H300 V650 H385" class="edge"/>
+  <path d="M385 698 H300 V777 H210" class="edge"/>
+
+  <!-- 主运行链：单向从左到右 -->
+  <path d="M615 389 H690 V163 H760" class="edge"/>
+  <text x="675" y="285" text-anchor="end" class="small">本轮 Context</text>
+  <path d="M1010 163 H1095 V335" class="edge"/>
+  <text x="1080" y="148" text-anchor="middle" class="small">Action Proposal</text>
+  <path d="M1210 389 H1270" class="edge"/>
+  <path d="M1460 389 H1690" class="edge"/>
+  <text x="1575" y="373" text-anchor="middle" class="small">受控调用</text>
+  <path d="M1822 443 V620" class="edge"/>
+  <text x="1850" y="535" class="small">查询或改变</text>
+
+  <!-- 支撑与回流：分别占用上、下两条通道 -->
+  <path d="M500 620 V443" class="edge"/>
+  <path d="M675 674 H615" class="edge"/>
+  <path d="M1095 620 V443" class="soft"/>
+  <path d="M1690 674 H1510" class="edge"/>
+  <text x="1600" y="658" text-anchor="middle" class="small">Observation</text>
+  <path d="M1280 674 H1250 V520 H575 V443" class="edge-halo"/>
+  <path d="M1280 674 H1250 V520 H575 V443" class="state-edge"/>
+  <text x="835" y="505" text-anchor="middle" class="small">状态进入 Context</text>
+
+  <!-- Governance：只保留垂直约束线 -->
+  <rect x="265" y="1050" width="1690" height="98" rx="20" class="role-gate-region"/>
+  <text x="1110" y="1090" text-anchor="middle" class="label">Governance</text>
+  <text x="1110" y="1121" text-anchor="middle" class="small">身份 · 权限 · 审计 · 预算 · 验收 · 正式放行，贯穿入口、运行与出口</text>
+  <path d="M500 1050 V728" class="soft"/>
+  <path d="M745 1050 V728" class="soft"/>
+  <path d="M1095 1050 V728" class="soft"/>
+
+  <!-- 组件角色图例：颜色不表示六类工程责任 -->
+  <rect x="10" y="865" width="235" height="250" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="28" y="895" class="legend-title">角色图例</text>
+
+  <rect x="28" y="912" width="18" height="18" rx="5" class="role-boundary"/>
+  <text x="58" y="927" class="legend">系统边界</text>
+
+  <rect x="28" y="946" width="18" height="18" rx="5" class="role-model"/>
+  <text x="58" y="961" class="legend">模型认知</text>
+
+  <rect x="28" y="980" width="18" height="18" rx="5" class="role-harness"/>
+  <text x="58" y="995" class="legend">Harness 编排</text>
+
+  <rect x="28" y="1014" width="18" height="18" rx="5" class="role-gate"/>
+  <text x="58" y="1029" class="legend">规则、验证与治理</text>
+
+  <rect x="28" y="1048" width="18" height="18" rx="5" class="role-state"/>
+  <text x="58" y="1063" class="legend">运行状态</text>
+
+  <rect x="28" y="1082" width="18" height="18" rx="5" class="role-environment"/>
+  <text x="58" y="1097" class="legend">执行环境</text>
+
+  <!-- 验收证据：正交折线使用下部独立通道 -->
+  <path d="M1110 860 H1080" class="edge-halo"/>
+  <path d="M1690 720 H1600 V860 H835 V728" class="edge"/>
+  <text x="1265" y="845" text-anchor="middle" class="small">验收证据</text>
+</svg>
