@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 的观察、思考与行动循环</title>
+  <desc id="desc">Agent 围绕目标持续观察环境、思考下一步、执行行动，再观察行动后的环境变化，直到目标达成</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#46556E"/>
+    </marker>
+    <style>
+      .title{font:600 34px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#27243A}
+      .subtitle{font:400 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#667085}
+      .card-title{font:600 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#25344C}
+      .card-text{font:400 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#60708A}
+      .center-title{font:600 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#FFFFFF}
+      .center-text{font:400 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#D7E3F7}
+      .env{font:500 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#40506A}
+      .edge{fill:none;stroke:#46556E;stroke-width:4;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <text x="800" y="58" text-anchor="middle" class="title">Agent 的心跳：观察 → 思考 → 行动 → 再观察</text>
+  <text x="800" y="94" text-anchor="middle" class="subtitle">不是跑一遍就完成，而是持续感知、反应与调整</text>
+
+  <rect x="70" y="125" width="1460" height="695" rx="28" fill="#F8F9FD" stroke="#D6DDEA" stroke-width="2"/>
+
+  <path d="M1050 222 C1260 245 1390 350 1220 490" class="edge"/>
+  <path d="M1020 555 C920 735 680 735 580 555" class="edge"/>
+  <path d="M380 490 C210 350 340 245 550 222" class="edge"/>
+
+  <rect x="550" y="150" width="500" height="145" rx="22" fill="#EAF2FF" stroke="#3B82F6" stroke-width="2.5"/>
+  <circle cx="605" cy="206" r="22" fill="#3B82F6"/>
+  <circle cx="605" cy="206" r="7" fill="#FFFFFF"/>
+  <text x="650" y="199" class="card-title">观察 Observe</text>
+  <text x="650" y="233" class="card-text">看清当前环境与上一步结果</text>
+  <text x="650" y="263" class="card-text">“现在是什么状态？”</text>
+
+  <rect x="1020" y="490" width="390" height="145" rx="22" fill="#F1EAFF" stroke="#7C3AED" stroke-width="2.5"/>
+  <circle cx="1075" cy="546" r="22" fill="#7C3AED"/>
+  <circle cx="1075" cy="546" r="8" fill="#FFFFFF"/>
+  <text x="1120" y="539" class="card-title">思考 Think</text>
+  <text x="1120" y="573" class="card-text">结合目标，决定下一步</text>
+  <text x="1120" y="603" class="card-text">“该采取哪个行动？”</text>
+
+  <rect x="190" y="490" width="390" height="145" rx="22" fill="#FFF0E2" stroke="#EA7A16" stroke-width="2.5"/>
+  <circle cx="245" cy="546" r="22" fill="#EA7A16"/>
+  <rect x="237" y="538" width="16" height="16" rx="3" fill="#FFFFFF"/>
+  <text x="290" y="539" class="card-title">行动 Act</text>
+  <text x="290" y="573" class="card-text">调用工具，执行动作</text>
+  <text x="290" y="603" class="card-text">“真正去做并改变环境”</text>
+
+  <circle cx="800" cy="455" r="108" fill="#102A4D"/>
+  <text x="800" y="449" text-anchor="middle" class="center-title">Agent</text>
+  <text x="800" y="485" text-anchor="middle" class="center-text">目标驱动</text>
+
+  <rect x="175" y="735" width="1250" height="58" rx="16" fill="#EEF4FF" stroke="#B8C9E5" stroke-width="1.8"/>
+  <text x="800" y="771" text-anchor="middle" class="env">Environment：行动改变环境，观察读取环境，循环到目标达成才停止</text>
+</svg>
