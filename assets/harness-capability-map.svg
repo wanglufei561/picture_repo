@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="900" viewBox="0 0 2100 900" role="img" aria-labelledby="title desc">
+  <title id="title">Harness 六组运行能力及其在闭环中的位置</title>
+  <desc id="desc">上下文管理、工具系统和反馈闭环构成主循环，会话管理、权限系统、护栏与恢复分别支撑三个阶段，任务契约和治理与验收位于 Harness 边界之外</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+    </marker>
+    <marker id="feedback-arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0891B2"/>
+    </marker>
+    <style>
+      .title{font:600 31px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#2F2B42}
+      .group{font:600 21px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+      .lane{font:400 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#7C8AA0;letter-spacing:1px}
+      .label{font:600 20px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .small{font:400 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#64748B}
+      .edge{fill:none;stroke:#64748B;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .feedback-edge{fill:none;stroke:#0891B2;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#feedback-arrow)}
+      .edge-halo{fill:none;stroke:#FAFAFF;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .support{fill:none;stroke:#94A3B8;stroke-width:2;stroke-dasharray:7 7}
+      .soft{fill:none;stroke:#94A3B8;stroke-width:2;stroke-dasharray:7 7;marker-end:url(#arrow)}
+      .role-boundary{fill:#DBEAFE;stroke:#3B82F6;stroke-width:2}
+      .role-model{fill:#FFE4CC;stroke:#EA580C;stroke-width:2}
+      .role-harness{fill:#EDE9FE;stroke:#7C3AED;stroke-width:2}
+      .role-gate{fill:#FFF4B8;stroke:#CA8A04;stroke-width:2}
+      .role-state{fill:#CFFAFE;stroke:#0891B2;stroke-width:2}
+      .role-environment{fill:#DCFCE7;stroke:#16A34A;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect width="2100" height="900" fill="#FFFFFF"/>
+  <text x="1050" y="58" text-anchor="middle" class="title">Harness 让闭环可执行、可恢复、可验证</text>
+
+  <!-- Harness 是全图主角，六组能力采用三列两行 -->
+  <rect x="250" y="115" width="1640" height="650" rx="30" fill="#FAFAFF" stroke="#C4B5FD" stroke-width="2"/>
+  <text x="285" y="155" class="group">Harness 六组运行能力</text>
+  <text x="285" y="190" class="lane">主运行链</text>
+  <text x="285" y="555" class="lane">支撑能力</text>
+
+  <!-- Harness 外部约束 -->
+  <rect x="10" y="295" width="190" height="100" rx="18" class="role-boundary"/>
+  <text x="105" y="336" text-anchor="middle" class="label">任务契约</text>
+  <text x="105" y="367" text-anchor="middle" class="small">目标 · 验收 · 边界</text>
+
+  <rect x="1910" y="295" width="180" height="100" rx="18" class="role-boundary"/>
+  <text x="2000" y="336" text-anchor="middle" class="label">治理与验收</text>
+  <text x="2000" y="367" text-anchor="middle" class="small">授权 · 审计 · 放行</text>
+
+  <!-- 主运行链：五个参与者位于同一水平层 -->
+  <rect x="310" y="285" width="240" height="120" rx="20" class="role-harness"/>
+  <text x="430" y="331" text-anchor="middle" class="label">上下文管理</text>
+  <text x="430" y="364" text-anchor="middle" class="small">选择 · 排序 · 预算 · 压缩</text>
+
+  <rect x="620" y="285" width="200" height="120" rx="20" class="role-model"/>
+  <text x="720" y="331" text-anchor="middle" class="label">Model</text>
+  <text x="720" y="364" text-anchor="middle" class="small">理解 · 推理 · 提议</text>
+
+  <rect x="890" y="285" width="240" height="120" rx="20" class="role-harness"/>
+  <text x="1010" y="331" text-anchor="middle" class="label">工具系统</text>
+  <text x="1010" y="364" text-anchor="middle" class="small">注册 · 校验 · 调用 · 转换</text>
+
+  <rect x="1200" y="285" width="260" height="120" rx="20" class="role-environment"/>
+  <text x="1330" y="331" text-anchor="middle" class="label">Runtime / Environment</text>
+  <text x="1330" y="364" text-anchor="middle" class="small">执行动作 · 返回结果</text>
+
+  <rect x="1530" y="285" width="240" height="120" rx="20" class="role-harness"/>
+  <text x="1650" y="331" text-anchor="middle" class="label">反馈闭环</text>
+  <text x="1650" y="364" text-anchor="middle" class="small">观测 · 测试 · 反馈 · 修正</text>
+
+  <!-- 三组支撑能力与对应主能力垂直对齐 -->
+  <rect x="310" y="590" width="240" height="100" rx="18" class="role-state"/>
+  <text x="430" y="631" text-anchor="middle" class="label">会话管理</text>
+  <text x="430" y="662" text-anchor="middle" class="small">持久化 · 续接 · 回放</text>
+
+  <rect x="890" y="590" width="240" height="100" rx="18" class="role-gate"/>
+  <text x="1010" y="631" text-anchor="middle" class="label">权限系统</text>
+  <text x="1010" y="662" text-anchor="middle" class="small">允许 · 确认 · 禁止</text>
+
+  <rect x="1530" y="590" width="240" height="100" rx="18" class="role-gate"/>
+  <text x="1650" y="631" text-anchor="middle" class="label">护栏与恢复</text>
+  <text x="1650" y="662" text-anchor="middle" class="small">上限 · 重试 · 降级 · 取消</text>
+
+  <!-- 外部输入 -->
+  <path d="M200 345 H310" class="edge"/>
+
+  <!-- 主循环：同层直线连接色块中点 -->
+  <path d="M550 345 H620" class="edge"/>
+  <text x="585" y="266" text-anchor="middle" class="small">Context</text>
+
+  <path d="M820 345 H890" class="edge"/>
+  <text x="855" y="266" text-anchor="middle" class="small">动作提议</text>
+
+  <path d="M1130 345 H1200" class="edge"/>
+  <text x="1165" y="266" text-anchor="middle" class="small">受控执行</text>
+
+  <path d="M1460 345 H1530" class="edge"/>
+  <text x="1495" y="266" text-anchor="middle" class="small">执行结果</text>
+
+  <!-- 三组支撑关系先绘制，回流线使用描边留白跨越权限约束 -->
+  <path d="M430 590 V495" class="support"/>
+  <path d="M1010 590 V405" class="soft"/>
+  <path d="M1650 590 V495" class="support"/>
+
+  <path d="M1650 405 V495 H430 V405" class="edge-halo"/>
+  <path d="M1650 405 V495 H430 V405" class="feedback-edge"/>
+  <text x="1040" y="525" text-anchor="middle" class="small">Observation 进入下一轮</text>
+
+  <!-- 治理与验收只约束相关能力，不参与主循环 -->
+  <path d="M1910 345 H1770" class="soft"/>
+  <path d="M1910 373 H1850 V640 H1770" class="soft"/>
+
+  <text x="1050" y="850" text-anchor="middle" class="small">主循环：Context → Model → Tool → Runtime / Environment → Feedback → Context</text>
+</svg>
