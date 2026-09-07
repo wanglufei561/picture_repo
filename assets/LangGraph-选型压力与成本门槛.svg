@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="815" viewBox="0 0 1200 815" role="img" aria-label="采用 LangGraph：控制压力与维护代价共同决定">
+<defs>
+<marker id="arrow-control" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#334155"/></marker>
+<marker id="arrow-data" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#059669"/></marker>
+<marker id="arrow-config" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#7C3AED"/></marker>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033}.title{font-size:30px;font-weight:650}.subtitle{font-size:16px;fill:#526075}.region{font-size:20px;font-weight:600;fill:#334155}.label{font-size:19px;font-weight:600}.small{font-size:16px;fill:#526075}.relation{font-size:15px;fill:#526075}</style>
+</defs>
+<text x="40" y="50" class="title" text-anchor="start">采用 LangGraph：控制压力与维护代价共同决定</text>
+<text x="40" y="82" class="subtitle" text-anchor="start">工程判断：是否值得把 State、转移条件与恢复语义，变成长期维护的业务协议</text>
+<g data-kind="container" data-id="pressure"><rect x="40" y="130" width="550" height="240" rx="22" fill="#EEF6FF" stroke="#93BFFC" stroke-width="1.5"/>
+<text x="68" y="166" class="region" text-anchor="start">运行压力 · 需要解决什么</text>
+</g>
+<g data-kind="node" data-id="needs" data-container="pressure"><rect x="80" y="205" width="470" height="125" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="315.0" y="248.0" class="label" text-anchor="middle">显式控制与连续性需求</text>
+<text x="315.0" y="276.0" class="small" text-anchor="middle">动态分支与循环</text>
+<text x="315.0" y="302.0" class="small" text-anchor="middle">跨调用恢复 · 人工介入 · 恢复审计</text>
+</g>
+<g data-kind="container" data-id="cost"><rect x="620" y="130" width="540" height="240" rx="22" fill="#F3EFFF" stroke="#B6A0ED" stroke-width="1.5"/>
+<text x="648" y="166" class="region" text-anchor="start">维护代价 · 团队承担什么</text>
+</g>
+<g data-kind="node" data-id="contract" data-container="cost"><rect x="660" y="205" width="460" height="125" rx="14" fill="#FFFFFF" stroke="#B6A0ED" stroke-width="1.6"/>
+<text x="890.0" y="248.0" class="label" text-anchor="middle">长期协议维护能力</text>
+<text x="890.0" y="276.0" class="small" text-anchor="middle">State Schema · 转移条件 · 路径测试</text>
+<text x="890.0" y="302.0" class="small" text-anchor="middle">副作用幂等 · 恢复边界 · 版本迁移</text>
+</g>
+<text x="600" y="419" class="small" text-anchor="middle" data-kind="annotation">需求与维护能力同时匹配，才形成采用 Graph API 的充分工程动机</text>
+<g data-kind="container" data-id="choices"><rect x="40" y="460" width="1120" height="300" rx="22" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.5"/>
+<text x="68" y="496" class="region" text-anchor="start">按主要责任选择载体</text>
+<text x="1132" y="496" class="small" text-anchor="end">不存在固定的先进等级</text>
+</g>
+<g data-kind="node" data-id="functions" data-container="choices"><rect x="80" y="540" width="230" height="170" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="195.0" y="590" class="label" text-anchor="middle">直接函数 / 工作流</text>
+<text x="195.0" y="618" class="small" text-anchor="middle">短时 · 固定路径</text>
+<text x="195.0" y="644" class="small" text-anchor="middle">可整体重试</text>
+</g>
+<g data-kind="node" data-id="create-agent" data-container="choices"><rect x="350" y="540" width="230" height="170" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="465.0" y="590" class="label" text-anchor="middle">createAgent()</text>
+<text x="465.0" y="618" class="small" text-anchor="middle">标准模型工具循环</text>
+<text x="465.0" y="644" class="small" text-anchor="middle">以提示、工具和</text>
+<text x="465.0" y="670" class="small" text-anchor="middle">Middleware 扩展</text>
+</g>
+<g data-kind="node" data-id="graph-api" data-container="choices"><rect x="620" y="540" width="230" height="170" rx="14" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="735.0" y="590" class="label" text-anchor="middle">LangGraph Graph API</text>
+<text x="735.0" y="618" class="small" text-anchor="middle">定制状态与分支</text>
+<text x="735.0" y="644" class="small" text-anchor="middle">循环 · 恢复 · 人工介入</text>
+</g>
+<g data-kind="node" data-id="harness" data-container="choices"><rect x="890" y="540" width="230" height="170" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="1005.0" y="590" class="label" text-anchor="middle">预置能力更多的 Harness</text>
+<text x="1005.0" y="618" class="small" text-anchor="middle">规划 · 文件系统</text>
+<text x="1005.0" y="644" class="small" text-anchor="middle">子 Agent · 上下文管理</text>
+</g>
+<text x="40" y="800" class="small" text-anchor="start" data-kind="annotation">不上图的信号：路径稳定线性、无需中间恢复，或维护状态图比解释业务本身更困难</text>
+</svg>
