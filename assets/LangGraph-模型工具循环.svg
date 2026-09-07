@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="770" viewBox="0 0 1200 770" role="img" aria-label="模型工具循环：结果写回，判断继续">
+<defs>
+<marker id="arrow-control" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#334155"/></marker>
+<marker id="arrow-data" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#059669"/></marker>
+<marker id="arrow-config" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#7C3AED"/></marker>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033}.title{font-size:30px;font-weight:650}.subtitle{font-size:16px;fill:#526075}.region{font-size:20px;font-weight:600;fill:#334155}.label{font-size:19px;font-weight:600}.small{font-size:16px;fill:#526075}.relation{font-size:15px;fill:#526075}</style>
+</defs>
+<text x="40" y="50" class="title" text-anchor="start">模型工具循环：结果写回，判断继续</text>
+<text x="40" y="82" class="subtitle" text-anchor="start">典型示例：工具结果通过消息状态进入下一轮模型上下文</text>
+<g data-kind="annotation"><path d="M40 106 H76" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="88" y="111" class="relation" text-anchor="start">调用与路由</text>
+</g>
+<g data-kind="annotation"><path d="M280 106 H316" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="328" y="111" class="relation" text-anchor="start">结果与消息回写</text>
+</g>
+<g data-kind="container" data-id="graph"><rect x="40" y="140" width="1120" height="555" rx="22" fill="#EEF6FF" stroke="#93BFFC" stroke-width="1.5"/>
+<text x="68" y="176" class="region" text-anchor="start">Graph · 显式控制与消息状态</text>
+</g>
+<g data-kind="node" data-id="end" data-container="graph"><rect x="470" y="215" width="260" height="65" rx="14" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="600.0" y="241.0" class="label" text-anchor="middle">END</text>
+<text x="600.0" y="269.0" class="small" text-anchor="middle">结束本轮图运行</text>
+</g>
+<g data-kind="node" data-id="model" data-container="graph"><rect x="80" y="365" width="260" height="110" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="210.0" y="400.5" class="label" text-anchor="middle">Model Node</text>
+<text x="210.0" y="428.5" class="small" text-anchor="middle">生成文本或 Tool Call</text>
+<text x="210.0" y="454.5" class="small" text-anchor="middle">bindTools 仅提供工具契约</text>
+</g>
+<g data-kind="node" data-id="router" data-container="graph"><rect x="470" y="365" width="260" height="110" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="600.0" y="413.5" class="label" text-anchor="middle">条件 Router</text>
+<text x="600.0" y="441.5" class="small" text-anchor="middle">检查模型输出</text>
+</g>
+<g data-kind="node" data-id="tools" data-container="graph"><rect x="860" y="365" width="260" height="110" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="990.0" y="400.5" class="label" text-anchor="middle">ToolNode</text>
+<text x="990.0" y="428.5" class="small" text-anchor="middle">匹配工具 · 校验参数</text>
+<text x="990.0" y="454.5" class="small" text-anchor="middle">调用真实工具</text>
+</g>
+<g data-kind="node" data-id="message" data-container="graph"><rect x="860" y="560" width="260" height="90" rx="14" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="990.0" y="598.5" class="label" text-anchor="middle">ToolMessage</text>
+<text x="990.0" y="626.5" class="small" text-anchor="middle">承载工具执行结果</text>
+</g>
+<g data-kind="node" data-id="messages" data-container="graph"><rect x="80" y="560" width="260" height="90" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="210.0" y="598.5" class="label" text-anchor="middle">MessagesValue</text>
+<text x="210.0" y="626.5" class="small" text-anchor="middle">合并模型与工具消息</text>
+</g>
+<path data-kind="edge" data-id="model-output" data-source="model" data-target="router" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M340 420 L470 420" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="405" y="405" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="model-output">模型输出</text>
+<path data-kind="edge" data-id="tool-route" data-source="router" data-target="tools" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M730 420 L860 420" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="795" y="405" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="tool-route">有 Tool Call</text>
+<path data-kind="edge" data-id="end-route" data-source="router" data-target="end" data-source-side="top" data-target-side="bottom" data-source-offset="0" data-target-offset="0" data-route="direct" d="M600 365 L600 280" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="685" y="330" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="end-route">无 Tool Call</text>
+<path data-kind="edge" data-id="tool-result" data-source="tools" data-target="message" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="direct" d="M990 475 L990 560" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="1040" y="526" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="tool-result">生成</text>
+<path data-kind="edge" data-id="writeback" data-source="message" data-target="messages" data-source-side="left" data-target-side="right" data-source-offset="0" data-target-offset="0" data-route="direct" d="M860 605 L340 605" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="600" y="590" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="writeback">写回工具结果</text>
+<path data-kind="edge" data-id="feedback" data-source="messages" data-target="model" data-source-side="top" data-target-side="bottom" data-source-offset="0" data-target-offset="0" data-route="direct" d="M210 560 L210 475" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="310" y="526" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="feedback">进入下一轮上下文</text>
+<text x="40" y="738" class="small" text-anchor="start" data-kind="annotation">模型消息也按 MessagesValue 协议合并；真实副作用由外部工具执行，图不替代授权与验收</text>
+</svg>
