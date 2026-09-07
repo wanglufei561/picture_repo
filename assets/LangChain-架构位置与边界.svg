@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="890" viewBox="0 0 1200 890" role="img" aria-labelledby="title desc">
+<title id="title">LangChain 的架构位置：标准组件与可配置 Harness</title><desc id="desc">Model Adapter 统一协议，createAgent() 提供可配置 Harness，LangGraph 推进图，Tool Runtime 执行动作</desc>
+<defs>
+<marker id="arrow-control" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#334155"/></marker>
+<marker id="arrow-feedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#059669"/></marker>
+<marker id="arrow-supply" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#7C3AED"/></marker>
+</defs>
+<g font-family="-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif" fill="#172033">
+<text x="30" y="45" font-size="31" font-weight="650">LangChain 的架构位置：标准组件与可配置 Harness</text>
+<text x="30" y="78" font-size="17" fill="#526075">两种入口共享标准化接口；只有 Agent 入口把模型与工具编成可执行图</text>
+<g data-kind="container" data-id="application">
+<rect x="30" y="110" width="1140" height="170" rx="22" fill="#F3EFFF" stroke="#BCA8E8" stroke-width="1.5"/>
+<text x="60" y="146" font-size="21" font-weight="650">Application / Product</text>
+<text x="1140" y="145" text-anchor="end" font-size="15" fill="#526075">定义任务与身份权限，验收结果并放行</text>
+</g>
+<g data-kind="container" data-id="langchain">
+<rect x="30" y="335" width="830" height="220" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="371" font-size="21" font-weight="650">LangChain</text>
+<text x="830" y="370" text-anchor="end" font-size="15" fill="#526075">逻辑组件边界</text>
+</g>
+<g data-kind="container" data-id="runtime">
+<rect x="30" y="610" width="830" height="220" rx="22" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.5"/>
+<text x="60" y="646" font-size="21" font-weight="650">运行与动作责任</text>
+<text x="830" y="645" text-anchor="end" font-size="15" fill="#526075">资源权限与执行隔离由应用部署保证</text>
+</g>
+<path data-kind="edge" data-id="app-agent" data-source="agent-entry" data-target="harness" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="direct" d="M245 255 L245 415" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="app-model" data-source="model-entry" data-target="adapter" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="direct" d="M665 255 L665 415" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="harness-adapter" data-source="harness" data-target="adapter" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M420 465 L510 465" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="adapter-provider" data-source="adapter" data-target="provider" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M820 465 L920 465" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="compile" data-source="harness" data-target="graph" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="direct" d="M245 515 L245 690" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-supply)"/>
+<path data-kind="edge" data-id="graph-tool" data-source="graph" data-target="tool" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M420 740 L510 740" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="tool-environment" data-source="tool" data-target="environment" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M820 740 L920 740" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<g data-kind="node" data-id="agent-entry" data-container="application">
+<rect x="70" y="185" width="350" height="70" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="245.0" y="216.0" text-anchor="middle" font-size="21" font-weight="650">Agent 入口</text>
+<text x="245.0" y="244.0" text-anchor="middle" font-size="16" fill="#526075">agent.invoke()</text>
+</g>
+<g data-kind="node" data-id="model-entry" data-container="application">
+<rect x="510" y="185" width="310" height="70" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="665.0" y="216.0" text-anchor="middle" font-size="21" font-weight="650">单次模型入口</text>
+<text x="665.0" y="244.0" text-anchor="middle" font-size="16" fill="#526075">model.invoke()</text>
+</g>
+<g data-kind="node" data-id="harness" data-container="langchain">
+<rect x="70" y="415" width="350" height="100" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="245.0" y="449.5" text-anchor="middle" font-size="21" font-weight="650">可配置 Agent Harness</text>
+<text x="245.0" y="477.5" text-anchor="middle" font-size="16" fill="#526075">createAgent() · Middleware</text>
+<text x="245.0" y="500.5" text-anchor="middle" font-size="16" fill="#526075">State / Checkpointer 接口</text>
+</g>
+<g data-kind="node" data-id="adapter" data-container="langchain">
+<rect x="510" y="415" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="665.0" y="449.5" text-anchor="middle" font-size="21" font-weight="650">标准化组件</text>
+<text x="665.0" y="477.5" text-anchor="middle" font-size="16" fill="#526075">Model / Message / Tool</text>
+<text x="665.0" y="500.5" text-anchor="middle" font-size="16" fill="#526075">Schema · Runnable · Adapter</text>
+</g>
+<g data-kind="node" data-id="provider">
+<rect x="920" y="415" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="1045.0" y="461.0" text-anchor="middle" font-size="21" font-weight="650">Provider / LLM</text>
+<text x="1045.0" y="489.0" text-anchor="middle" font-size="16" fill="#526075">模型权重与生成能力</text>
+</g>
+<g data-kind="node" data-id="graph" data-container="runtime">
+<rect x="70" y="690" width="350" height="100" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="245.0" y="736.0" text-anchor="middle" font-size="21" font-weight="650">LangGraph Runtime</text>
+<text x="245.0" y="764.0" text-anchor="middle" font-size="16" fill="#526075">推进模型、工具与 Hook 节点</text>
+</g>
+<g data-kind="node" data-id="tool" data-container="runtime">
+<rect x="510" y="690" width="310" height="100" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="665.0" y="724.5" text-anchor="middle" font-size="21" font-weight="650">Tool / App Runtime</text>
+<text x="665.0" y="752.5" text-anchor="middle" font-size="16" fill="#526075">工具函数 · 进程 · Sandbox</text>
+<text x="665.0" y="775.5" text-anchor="middle" font-size="16" fill="#526075">执行代码与资源访问</text>
+</g>
+<g data-kind="node" data-id="environment">
+<rect x="920" y="690" width="250" height="100" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="1045.0" y="736.0" text-anchor="middle" font-size="21" font-weight="650">外部环境</text>
+<text x="1045.0" y="764.0" text-anchor="middle" font-size="16" fill="#526075">数据源 · API · 文件系统</text>
+</g>
+<text data-kind="relation-label" data-relation-id="app-agent" x="260" y="305" text-anchor="start" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">启动 Agent 图</text>
+<text data-kind="relation-label" data-relation-id="app-model" x="680" y="305" text-anchor="start" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">直接调用接口</text>
+<text data-kind="relation-label" data-relation-id="harness-adapter" x="465" y="451" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">调用</text>
+<text data-kind="relation-label" data-relation-id="adapter-provider" x="870" y="451" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">请求</text>
+<text data-kind="relation-label" data-relation-id="compile" x="260" y="588" text-anchor="start" font-size="14" fill="#7C3AED" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">编译状态图</text>
+<text data-kind="relation-label" data-relation-id="graph-tool" x="465" y="726" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">调度</text>
+<text data-kind="relation-label" data-relation-id="tool-environment" x="870" y="726" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">访问</text>
+<text data-kind="annotation" x="1000" y="226" text-anchor="middle" font-size="16" fill="#526075">同一应用按任务选择入口</text>
+<text data-kind="annotation" x="30" y="865" text-anchor="start" font-size="15" fill="#526075">逻辑责任与调用方向 · 非部署拓扑；请求后的返回链见下一张协议图</text>
+</g>
+</svg>
