@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1030" viewBox="0 0 1200 1030" role="img" aria-labelledby="title desc">
+<title id="title">三种调用形态，三种循环责任分配</title><desc id="desc">单次调用无循环；手写循环由应用推进；createAgent() 提供预制循环并由 LangGraph Runtime 推进</desc>
+<defs>
+<marker id="arrow-control" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#334155"/></marker>
+<marker id="arrow-feedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#059669"/></marker>
+<marker id="arrow-supply" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#7C3AED"/></marker>
+</defs>
+<g font-family="-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif" fill="#172033">
+<text x="30" y="45" font-size="31" font-weight="650">三种调用形态，三种循环责任分配</text>
+<text x="30" y="78" font-size="17" fill="#526075">变化的是谁维护消息、执行工具并判断继续；三种形态可以按任务分别选择</text>
+<g data-kind="container" data-id="single">
+<rect x="30" y="120" width="1140" height="190" rx="22" fill="#F3EFFF" stroke="#BCA8E8" stroke-width="1.5"/>
+<text x="60" y="156" font-size="21" font-weight="650">model.invoke() · 无循环</text>
+<text x="1140" y="155" text-anchor="end" font-size="15" fill="#526075">一次模型交互</text>
+</g>
+<g data-kind="container" data-id="manual">
+<rect x="30" y="355" width="1140" height="275" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="391" font-size="21" font-weight="650">手写 Tool Loop · 应用拥有循环</text>
+<text x="1140" y="390" text-anchor="end" font-size="15" fill="#526075">应用维护消息、执行与停止判断</text>
+</g>
+<g data-kind="container" data-id="agent">
+<rect x="30" y="675" width="1140" height="305" rx="22" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.5"/>
+<text x="60" y="711" font-size="21" font-weight="650">createAgent() · 框架提供预制循环</text>
+<text x="1140" y="710" text-anchor="end" font-size="15" fill="#526075">LangGraph Runtime 推进编译后的图</text>
+</g>
+<path data-kind="edge" data-id="single-invoke" data-source="single-app" data-target="single-model" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M340 237.5 L455 237.5" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="single-return" data-source="single-model" data-target="single-result" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M745 237.5 L860 237.5" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="manual-call" data-source="manual-driver" data-target="manual-model" data-source-side="left" data-target-side="right" data-source-offset="-20" data-target-offset="-20" data-route="direct" d="M455 470 L340 470" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="manual-proposal" data-source="manual-model" data-target="manual-driver" data-source-side="right" data-target-side="left" data-source-offset="20" data-target-offset="20" data-route="direct" d="M340 510 L455 510" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="manual-execute" data-source="manual-driver" data-target="manual-tools" data-source-side="right" data-target-side="left" data-source-offset="-20" data-target-offset="-20" data-route="direct" d="M745 470 L860 470" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="manual-feedback" data-source="manual-tools" data-target="manual-driver" data-source-side="left" data-target-side="right" data-source-offset="20" data-target-offset="20" data-route="direct" d="M860 510 L745 510" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="agent-start" data-source="agent-config" data-target="agent-model" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M340 820 L455 820" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="agent-execute" data-source="agent-model" data-target="agent-tools" data-source-side="right" data-target-side="left" data-source-offset="-20" data-target-offset="-20" data-route="direct" d="M745 800 L860 800" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="agent-feedback" data-source="agent-tools" data-target="agent-model" data-source-side="left" data-target-side="right" data-source-offset="20" data-target-offset="20" data-route="direct" d="M860 840 L745 840" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<g data-kind="node" data-id="single-app" data-container="single">
+<rect x="70" y="200" width="270" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="205.0" y="233.5" text-anchor="middle" font-size="21" font-weight="650">应用调用</text>
+<text x="205.0" y="261.5" text-anchor="middle" font-size="16" fill="#526075">提交 Messages</text>
+</g>
+<g data-kind="node" data-id="single-model" data-container="single">
+<rect x="455" y="200" width="290" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="600.0" y="233.5" text-anchor="middle" font-size="21" font-weight="650">Model</text>
+<text x="600.0" y="261.5" text-anchor="middle" font-size="16" fill="#526075">一次模型交互</text>
+</g>
+<g data-kind="node" data-id="single-result" data-container="single">
+<rect x="860" y="200" width="270" height="75" rx="14" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="995.0" y="233.5" text-anchor="middle" font-size="21" font-weight="650">AIMessage</text>
+<text x="995.0" y="261.5" text-anchor="middle" font-size="16" fill="#526075">返回本次模型响应</text>
+</g>
+<g data-kind="node" data-id="manual-model" data-container="manual">
+<rect x="70" y="440" width="270" height="100" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="205.0" y="486.0" text-anchor="middle" font-size="21" font-weight="650">Model</text>
+<text x="205.0" y="514.0" text-anchor="middle" font-size="16" fill="#526075">返回文本或 Tool Call</text>
+</g>
+<g data-kind="node" data-id="manual-driver" data-container="manual">
+<rect x="455" y="440" width="290" height="100" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="600.0" y="474.5" text-anchor="middle" font-size="21" font-weight="650">应用循环代码</text>
+<text x="600.0" y="502.5" text-anchor="middle" font-size="16" fill="#526075">while / 路由 / 停止条件</text>
+<text x="600.0" y="525.5" text-anchor="middle" font-size="16" fill="#526075">保存并回填 Messages</text>
+</g>
+<g data-kind="node" data-id="manual-tools" data-container="manual">
+<rect x="860" y="440" width="270" height="100" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="995.0" y="486.0" text-anchor="middle" font-size="21" font-weight="650">Tools</text>
+<text x="995.0" y="514.0" text-anchor="middle" font-size="16" fill="#526075">由应用分派，执行函数访问环境</text>
+</g>
+<g data-kind="node" data-id="agent-config" data-container="agent">
+<rect x="70" y="770" width="270" height="100" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="205.0" y="804.5" text-anchor="middle" font-size="21" font-weight="650">应用声明与启动</text>
+<text x="205.0" y="832.5" text-anchor="middle" font-size="16" fill="#526075">Model · Tools · 策略与限制</text>
+<text x="205.0" y="855.5" text-anchor="middle" font-size="16" fill="#526075">agent.invoke()</text>
+</g>
+<g data-kind="node" data-id="agent-model" data-container="agent">
+<rect x="455" y="770" width="290" height="100" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="600.0" y="816.0" text-anchor="middle" font-size="21" font-weight="650">模型节点 + Hooks</text>
+<text x="600.0" y="844.0" text-anchor="middle" font-size="16" fill="#526075">LangChain 组织上下文与调用</text>
+</g>
+<g data-kind="node" data-id="agent-tools" data-container="agent">
+<rect x="860" y="770" width="270" height="100" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="995.0" y="816.0" text-anchor="middle" font-size="21" font-weight="650">工具节点 + Hooks</text>
+<text x="995.0" y="844.0" text-anchor="middle" font-size="16" fill="#526075">Runtime 路由，工具执行动作</text>
+</g>
+<text data-kind="relation-label" data-relation-id="single-invoke" x="397" y="224" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">invoke()</text>
+<text data-kind="relation-label" data-relation-id="single-return" x="802" y="224" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">返回</text>
+<text data-kind="relation-label" data-relation-id="manual-call" x="397" y="455" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">模型请求</text>
+<text data-kind="relation-label" data-relation-id="manual-proposal" x="397" y="537" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">返回提议</text>
+<text data-kind="relation-label" data-relation-id="manual-execute" x="802" y="455" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">分派工具</text>
+<text data-kind="relation-label" data-relation-id="manual-feedback" x="802" y="537" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">ToolMessage</text>
+<text data-kind="relation-label" data-relation-id="agent-start" x="397" y="805" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">进入图</text>
+<text data-kind="relation-label" data-relation-id="agent-execute" x="802" y="787" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">工具路由</text>
+<text data-kind="relation-label" data-relation-id="agent-feedback" x="802" y="863" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">回填 State</text>
+<text data-kind="annotation" x="70" y="595" text-anchor="start" font-size="16" fill="#526075">继续 / 停止、消息回填与工具分派都由应用决定</text>
+<text data-kind="annotation" x="455" y="930" text-anchor="start" font-size="16" fill="#526075">图路由决定继续或结束；最终 State 返回应用</text>
+<text data-kind="annotation" x="70" y="930" text-anchor="start" font-size="15" fill="#526075">应用仍负责身份与业务验收</text>
+</g>
+</svg>
