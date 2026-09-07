@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-label="LangGraph：声明协议，运行时推进">
+<defs>
+<marker id="arrow-control" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#334155"/></marker>
+<marker id="arrow-data" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#059669"/></marker>
+<marker id="arrow-config" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#7C3AED"/></marker>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033}.title{font-size:30px;font-weight:650}.subtitle{font-size:16px;fill:#526075}.region{font-size:20px;font-weight:600;fill:#334155}.label{font-size:19px;font-weight:600}.small{font-size:16px;fill:#526075}.relation{font-size:15px;fill:#526075}</style>
+</defs>
+<text x="40" y="50" class="title" text-anchor="start">LangGraph：声明协议，运行时推进</text>
+<text x="40" y="82" class="subtitle" text-anchor="start">compile() 交出执行次序；应用仍持有工作内容、身份授权与业务验收责任</text>
+<g data-kind="annotation"><path d="M40 106 H76" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="88" y="111" class="relation" text-anchor="start">调用与调度</text>
+</g>
+<g data-kind="annotation"><path d="M260 106 H296" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="308" y="111" class="relation" text-anchor="start">运行记录与投影</text>
+</g>
+<g data-kind="container" data-id="build"><rect x="40" y="140" width="1120" height="220" rx="22" fill="#F3EFFF" stroke="#B6A0ED" stroke-width="1.5"/>
+<text x="68" y="176" class="region" text-anchor="start">构建期 · 定义可执行协议</text>
+</g>
+<g data-kind="node" data-id="stategraph" data-container="build"><rect x="80" y="220" width="440" height="100" rx="14" fill="#FFFFFF" stroke="#B6A0ED" stroke-width="1.6"/>
+<text x="300.0" y="263.5" class="label" text-anchor="middle">StateGraph</text>
+<text x="300.0" y="291.5" class="small" text-anchor="middle">State Schema · Node · Edge / Command</text>
+</g>
+<g data-kind="node" data-id="compiled" data-container="build"><rect x="750" y="220" width="370" height="100" rx="14" fill="#FFFFFF" stroke="#B6A0ED" stroke-width="1.6"/>
+<text x="935.0" y="263.5" class="label" text-anchor="middle">Compiled Graph</text>
+<text x="935.0" y="291.5" class="small" text-anchor="middle">invoke() · stream() · 状态查询</text>
+</g>
+<path data-kind="edge" data-id="compile" data-source="stategraph" data-target="compiled" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M520 270 L750 270" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="635" y="254" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="compile">compile()</text>
+<g data-kind="container" data-id="execution"><rect x="40" y="440" width="1120" height="180" rx="22" fill="#EEF6FF" stroke="#93BFFC" stroke-width="1.5"/>
+<text x="68" y="476" class="region" text-anchor="start">执行期 · Graph Runtime</text>
+<text x="1132" y="476" class="small" text-anchor="end">概念性执行系统，并非单一公开类</text>
+</g>
+<g data-kind="node" data-id="runtime" data-container="execution"><rect x="350" y="510" width="500" height="70" rx="14" fill="#EEF6FF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="600.0" y="538.5" class="label" text-anchor="middle">Super-step 执行循环</text>
+<text x="600.0" y="566.5" class="small" text-anchor="middle">激活节点 · 通道合并 · 准备下一步</text>
+</g>
+<path data-kind="edge" data-id="invoke" data-source="compiled" data-target="runtime" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="orthogonal" d="M935 320 L935 400 L600 400 L600 510" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="760" y="387" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="invoke">启动 / 接续运行</text>
+<g data-kind="container" data-id="integration"><rect x="40" y="710" width="1120" height="160" rx="22" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.5"/>
+<text x="68" y="746" class="region" text-anchor="start">运行接入</text>
+</g>
+<g data-kind="node" data-id="work" data-container="integration"><rect x="80" y="780" width="270" height="50" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="215.0" y="811.5" class="label" text-anchor="middle">节点内工作</text>
+</g>
+<g data-kind="node" data-id="checkpoint" data-container="integration"><rect x="465" y="780" width="270" height="50" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="600.0" y="811.5" class="label" text-anchor="middle">Checkpointer</text>
+</g>
+<g data-kind="node" data-id="projection" data-container="integration"><rect x="850" y="780" width="270" height="50" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="985.0" y="811.5" class="label" text-anchor="middle">Streaming</text>
+</g>
+<path data-kind="edge" data-id="call-work" data-source="runtime" data-target="work" data-source-side="left" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="orthogonal" d="M350 545 L215 545 L215 780" fill="none" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow-control)"/>
+<text x="110" y="680" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="call-work">调用模型 / 工具 / 代码</text>
+<path data-kind="edge" data-id="persist" data-source="runtime" data-target="checkpoint" data-source-side="bottom" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="direct" d="M600 580 L600 780" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="720" y="670" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="persist">按 Durability 保存现场</text>
+<path data-kind="edge" data-id="stream" data-source="runtime" data-target="projection" data-source-side="right" data-target-side="top" data-source-offset="0" data-target-offset="0" data-route="orthogonal" d="M850 545 L985 545 L985 780" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-data)"/>
+<text x="1080" y="680" class="relation" text-anchor="middle" data-kind="relation-label" data-relation-id="stream">发布运行投影</text>
+<text x="40" y="901" class="small" text-anchor="start" data-kind="annotation">Graph Runtime 与节点可读取的 Runtime 上下文对象不同；Checkpoint 不构成外部事务</text>
+</svg>
