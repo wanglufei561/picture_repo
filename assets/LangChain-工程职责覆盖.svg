@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1050" viewBox="0 0 1200 1050" role="img" aria-labelledby="title desc">
+<title id="title">LangChain 在 Agent 工程责任中的覆盖位置</title><desc id="desc">LangChain 提供动作协议与预制循环；模型能力、现实权限与业务验收仍有外部责任人</desc>
+<defs>
+<marker id="arrow-control" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#334155"/></marker>
+<marker id="arrow-feedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#059669"/></marker>
+<marker id="arrow-supply" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#7C3AED"/></marker>
+</defs>
+<g font-family="-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif" fill="#172033">
+<text x="30" y="45" font-size="31" font-weight="650">LangChain 在 Agent 工程责任中的覆盖位置</text>
+<text x="30" y="78" font-size="17" fill="#526075">按责任判断框架覆盖范围；“提供接口”与“完成责任”需要分别确认</text>
+<g data-kind="container" data-id="contract">
+<rect x="30" y="145" width="1140" height="125" rx="22" fill="#F3EFFF" stroke="#BCA8E8" stroke-width="1.5"/>
+<text x="60" y="181" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="container" data-id="context">
+<rect x="30" y="290" width="1140" height="125" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="326" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="container" data-id="decision">
+<rect x="30" y="435" width="1140" height="125" rx="22" fill="#F3EFFF" stroke="#BCA8E8" stroke-width="1.5"/>
+<text x="60" y="471" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="container" data-id="action">
+<rect x="30" y="580" width="1140" height="125" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="616" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="container" data-id="control">
+<rect x="30" y="725" width="1140" height="125" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="761" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="container" data-id="governance">
+<rect x="30" y="870" width="1140" height="125" rx="22" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.5"/>
+<text x="60" y="906" font-size="21" font-weight="650"></text>
+</g>
+<g data-kind="node" data-id="contract-lc" data-container="contract">
+<rect x="265" y="170" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="203.5" text-anchor="middle" font-size="20" font-weight="650">输入与输出接口</text>
+<text x="475.0" y="231.5" text-anchor="middle" font-size="16" fill="#526075">接收任务、约束与格式</text>
+</g>
+<g data-kind="node" data-id="contract-owner" data-container="contract">
+<rect x="745" y="170" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="203.5" text-anchor="middle" font-size="20" font-weight="650">Application / Product</text>
+<text x="942.5" y="231.5" text-anchor="middle" font-size="16" fill="#526075">定义目标、成功标准与正式放行</text>
+</g>
+<g data-kind="node" data-id="context-lc" data-container="context">
+<rect x="265" y="315" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="348.5" text-anchor="middle" font-size="20" font-weight="650">Messages · Context · State</text>
+<text x="475.0" y="376.5" text-anchor="middle" font-size="16" fill="#526075">提供上下文载体与运行接口</text>
+</g>
+<g data-kind="node" data-id="context-owner" data-container="context">
+<rect x="745" y="315" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="348.5" text-anchor="middle" font-size="20" font-weight="650">应用的上下文工程</text>
+<text x="942.5" y="376.5" text-anchor="middle" font-size="16" fill="#526075">选择、可信度、保留与长期记忆治理</text>
+</g>
+<g data-kind="node" data-id="decision-lc" data-container="decision">
+<rect x="265" y="460" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="493.5" text-anchor="middle" font-size="20" font-weight="650">Model Adapter</text>
+<text x="475.0" y="521.5" text-anchor="middle" font-size="16" fill="#526075">统一输入输出；组织模型调用</text>
+</g>
+<g data-kind="node" data-id="decision-owner" data-container="decision">
+<rect x="745" y="460" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="493.5" text-anchor="middle" font-size="20" font-weight="650">Provider / LLM</text>
+<text x="942.5" y="521.5" text-anchor="middle" font-size="16" fill="#526075">产生文本、局部判断与动作提议</text>
+</g>
+<g data-kind="node" data-id="action-lc" data-container="action">
+<rect x="265" y="605" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="638.5" text-anchor="middle" font-size="20" font-weight="650">Tool Calling 往返契约</text>
+<text x="475.0" y="666.5" text-anchor="middle" font-size="16" fill="#526075">Tool Schema · Tool Call · ToolMessage</text>
+</g>
+<g data-kind="node" data-id="action-owner" data-container="action">
+<rect x="745" y="605" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="638.5" text-anchor="middle" font-size="20" font-weight="650">Tool / App Runtime</text>
+<text x="942.5" y="666.5" text-anchor="middle" font-size="16" fill="#526075">校验权限与参数；执行真实副作用</text>
+</g>
+<g data-kind="node" data-id="control-lc" data-container="control">
+<rect x="265" y="750" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="783.5" text-anchor="middle" font-size="20" font-weight="650">createAgent() · Middleware</text>
+<text x="475.0" y="811.5" text-anchor="middle" font-size="16" fill="#526075">预制循环、路由与生命周期扩展点</text>
+</g>
+<g data-kind="node" data-id="control-owner" data-container="control">
+<rect x="745" y="750" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="783.5" text-anchor="middle" font-size="20" font-weight="650">LangGraph Runtime</text>
+<text x="942.5" y="811.5" text-anchor="middle" font-size="16" fill="#526075">推进状态图；应用限定预算与终止策略</text>
+</g>
+<g data-kind="node" data-id="governance-lc" data-container="governance">
+<rect x="265" y="895" width="420" height="75" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="928.5" text-anchor="middle" font-size="20" font-weight="650">Schema · Hooks · Checkpointer</text>
+<text x="475.0" y="956.5" text-anchor="middle" font-size="16" fill="#526075">结构约束、治理接口与状态快照</text>
+</g>
+<g data-kind="node" data-id="governance-owner" data-container="governance">
+<rect x="745" y="895" width="395" height="75" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="942.5" y="928.5" text-anchor="middle" font-size="20" font-weight="650">应用与基础设施</text>
+<text x="942.5" y="956.5" text-anchor="middle" font-size="16" fill="#526075">身份、隔离、来源证明与业务验收</text>
+</g>
+<text data-kind="annotation" x="60" y="120" text-anchor="start" font-size="16" fill="#526075">工程责任</text>
+<text data-kind="annotation" x="380" y="120" text-anchor="start" font-size="16" fill="#526075">LangChain 承接范围</text>
+<text data-kind="annotation" x="850" y="120" text-anchor="start" font-size="16" fill="#526075">应用与相邻系统仍负责</text>
+<text data-kind="annotation" x="60" y="192" text-anchor="start" font-size="21" fill="#172033">任务契约</text>
+<text data-kind="annotation" x="60" y="224" text-anchor="start" font-size="15" fill="#7C3AED">应用主责</text>
+<text data-kind="annotation" x="60" y="337" text-anchor="start" font-size="21" fill="#172033">上下文</text>
+<text data-kind="annotation" x="60" y="369" text-anchor="start" font-size="15" fill="#236186">部分承接</text>
+<text data-kind="annotation" x="60" y="482" text-anchor="start" font-size="21" fill="#172033">决策</text>
+<text data-kind="annotation" x="60" y="514" text-anchor="start" font-size="15" fill="#7C3AED">能力在模型侧</text>
+<text data-kind="annotation" x="60" y="627" text-anchor="start" font-size="21" fill="#172033">行动</text>
+<text data-kind="annotation" x="60" y="659" text-anchor="start" font-size="15" fill="#236186">核心承接协议</text>
+<text data-kind="annotation" x="60" y="772" text-anchor="start" font-size="21" fill="#172033">控制</text>
+<text data-kind="annotation" x="60" y="804" text-anchor="start" font-size="15" fill="#236186">提供循环实现</text>
+<text data-kind="annotation" x="60" y="917" text-anchor="start" font-size="21" fill="#172033">验证与治理</text>
+<text data-kind="annotation" x="60" y="949" text-anchor="start" font-size="15" fill="#236186">部分承接</text>
+</g>
+</svg>
