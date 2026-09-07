@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1010" viewBox="0 0 1200 1010" role="img" aria-labelledby="title desc">
+<title id="title">三条横切链：本轮依据、运行事实与过程投影</title><desc id="desc">Context 提供本次依据，State 保存运行事实，Streaming 把过程投给应用消费</desc>
+<defs>
+<marker id="arrow-control" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#334155"/></marker>
+<marker id="arrow-feedback" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#059669"/></marker>
+<marker id="arrow-supply" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4.5 L0 9 Z" fill="#7C3AED"/></marker>
+</defs>
+<g font-family="-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif" fill="#172033">
+<text x="30" y="45" font-size="31" font-weight="650">三条横切链：本轮依据、运行事实与过程投影</text>
+<text x="30" y="78" font-size="17" fill="#526075">Context、State 与 Streaming 各自服务不同消费者，不能互相替代</text>
+<g data-kind="container" data-id="context">
+<rect x="30" y="120" width="1140" height="235" rx="22" fill="#F3EFFF" stroke="#BCA8E8" stroke-width="1.5"/>
+<text x="60" y="156" font-size="21" font-weight="650">Runtime Context · 本次执行依据</text>
+<text x="1140" y="155" text-anchor="end" font-size="15" fill="#526075">不会由 thread_id 自动恢复</text>
+</g>
+<g data-kind="container" data-id="state">
+<rect x="30" y="395" width="1140" height="245" rx="22" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.5"/>
+<text x="60" y="431" font-size="21" font-weight="650">Agent State · 保存与恢复运行事实</text>
+<text x="1140" y="430" text-anchor="end" font-size="15" fill="#526075">thread_id 标识同一条状态序列</text>
+</g>
+<g data-kind="container" data-id="stream">
+<rect x="30" y="680" width="1140" height="245" rx="22" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.5"/>
+<text x="60" y="716" font-size="21" font-weight="650">Streaming · 应用消费过程投影</text>
+<text x="1140" y="715" text-anchor="end" font-size="15" fill="#526075">观察通道不等于控制通道</text>
+</g>
+<path data-kind="edge" data-id="context-inject" data-source="caller" data-target="context-object" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M330 250 L445 250" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-supply)" stroke-dasharray="6 5"/>
+<path data-kind="edge" data-id="context-read" data-source="context-object" data-target="context-consumer" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M745 250 L860 250" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-supply)"/>
+<path data-kind="edge" data-id="nodes-write" data-source="graph-nodes" data-target="state-object" data-source-side="right" data-target-side="left" data-source-offset="-20" data-target-offset="-20" data-route="direct" d="M330 510 L445 510" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="nodes-read" data-source="state-object" data-target="graph-nodes" data-source-side="left" data-target-side="right" data-source-offset="20" data-target-offset="20" data-route="direct" d="M445 550 L330 550" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-control)"/>
+<path data-kind="edge" data-id="state-save" data-source="state-object" data-target="checkpointer" data-source-side="right" data-target-side="left" data-source-offset="-20" data-target-offset="-20" data-route="direct" d="M745 510 L860 510" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="state-restore" data-source="checkpointer" data-target="state-object" data-source-side="left" data-target-side="right" data-source-offset="20" data-target-offset="20" data-route="direct" d="M860 550 L745 550" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="running-events" data-source="running" data-target="events" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M285 812.5 L375 812.5" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="events-filter" data-source="events" data-target="filter" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M575 812.5 L665 812.5" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<path data-kind="edge" data-id="filter-ui" data-source="filter" data-target="ui" data-source-side="right" data-target-side="left" data-source-offset="0" data-target-offset="0" data-route="direct" d="M880 812.5 L970 812.5" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-feedback)"/>
+<g data-kind="node" data-id="caller" data-container="context">
+<rect x="70" y="200" width="260" height="100" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="200.0" y="234.5" text-anchor="middle" font-size="21" font-weight="650">调用方</text>
+<text x="200.0" y="262.5" text-anchor="middle" font-size="16" fill="#526075">认证信息 · 请求配置</text>
+<text x="200.0" y="285.5" text-anchor="middle" font-size="16" fill="#526075">允许访问的资料范围</text>
+</g>
+<g data-kind="node" data-id="context-object" data-container="context">
+<rect x="445" y="200" width="300" height="100" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="595.0" y="234.5" text-anchor="middle" font-size="21" font-weight="650">Runtime Context</text>
+<text x="595.0" y="262.5" text-anchor="middle" font-size="16" fill="#526075">依赖与配置对象</text>
+<text x="595.0" y="285.5" text-anchor="middle" font-size="16" fill="#526075">默认不进入 Messages</text>
+</g>
+<g data-kind="node" data-id="context-consumer" data-container="context">
+<rect x="860" y="200" width="270" height="100" rx="14" fill="#FFFFFF" stroke="#BCA8E8" stroke-width="1.7"/>
+<text data-kind="node-label" x="995.0" y="234.5" text-anchor="middle" font-size="21" font-weight="650">Middleware / Tools</text>
+<text x="995.0" y="262.5" text-anchor="middle" font-size="16" fill="#526075">读取本次依据</text>
+<text x="995.0" y="285.5" text-anchor="middle" font-size="16" fill="#526075">决定如何使用与传递</text>
+</g>
+<g data-kind="node" data-id="graph-nodes" data-container="state">
+<rect x="70" y="480" width="260" height="100" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="200.0" y="526.0" text-anchor="middle" font-size="21" font-weight="650">图节点</text>
+<text x="200.0" y="554.0" text-anchor="middle" font-size="16" fill="#526075">模型、工具与节点式 Hook</text>
+</g>
+<g data-kind="node" data-id="state-object" data-container="state">
+<rect x="445" y="480" width="300" height="100" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="595.0" y="514.5" text-anchor="middle" font-size="21" font-weight="650">Agent State</text>
+<text x="595.0" y="542.5" text-anchor="middle" font-size="16" fill="#526075">节点共同读写的运行数据</text>
+<text x="595.0" y="565.5" text-anchor="middle" font-size="16" fill="#526075">Messages · structuredResponse</text>
+</g>
+<g data-kind="node" data-id="checkpointer" data-container="state">
+<rect x="860" y="480" width="270" height="100" rx="14" fill="#FFFFFF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="995.0" y="514.5" text-anchor="middle" font-size="21" font-weight="650">Checkpointer</text>
+<text x="995.0" y="542.5" text-anchor="middle" font-size="16" fill="#526075">按图步骤保存快照</text>
+<text x="995.0" y="565.5" text-anchor="middle" font-size="16" fill="#526075">thread_id 关联序列</text>
+</g>
+<g data-kind="node" data-id="running" data-container="stream">
+<rect x="70" y="765" width="215" height="95" rx="14" fill="#EEF6FF" stroke="#94BDE9" stroke-width="1.7"/>
+<text data-kind="node-label" x="177.5" y="808.5" text-anchor="middle" font-size="20" font-weight="650">底层运行</text>
+<text x="177.5" y="836.5" text-anchor="middle" font-size="16" fill="#526075">模型、工具与图状态变化</text>
+</g>
+<g data-kind="node" data-id="events" data-container="stream">
+<rect x="375" y="765" width="200" height="95" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="475.0" y="797.0" text-anchor="middle" font-size="20" font-weight="650">流式事件</text>
+<text x="475.0" y="825.0" text-anchor="middle" font-size="16" fill="#526075">updates / messages</text>
+<text x="475.0" y="848.0" text-anchor="middle" font-size="16" fill="#526075">custom / events</text>
+</g>
+<g data-kind="node" data-id="filter" data-container="stream">
+<rect x="665" y="765" width="215" height="95" rx="14" fill="#FFFFFF" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="772.5" y="808.5" text-anchor="middle" font-size="20" font-weight="650">应用事件处理</text>
+<text x="772.5" y="836.5" text-anchor="middle" font-size="16" fill="#526075">脱敏 · 归一化 · 过滤</text>
+</g>
+<g data-kind="node" data-id="ui" data-container="stream">
+<rect x="970" y="765" width="160" height="95" rx="14" fill="#F0FDF7" stroke="#8DC9AF" stroke-width="1.7"/>
+<text data-kind="node-label" x="1050.0" y="808.5" text-anchor="middle" font-size="19" font-weight="650">UI / 外部 API</text>
+<text x="1050.0" y="836.5" text-anchor="middle" font-size="16" fill="#526075">稳定产品事件</text>
+</g>
+<text data-kind="relation-label" data-relation-id="context-inject" x="387" y="235" text-anchor="middle" font-size="14" fill="#7C3AED" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">调用时注入</text>
+<text data-kind="relation-label" data-relation-id="context-read" x="802" y="235" text-anchor="middle" font-size="14" fill="#7C3AED" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">本次读取</text>
+<text data-kind="relation-label" data-relation-id="nodes-write" x="387" y="496" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">更新</text>
+<text data-kind="relation-label" data-relation-id="nodes-read" x="387" y="577" text-anchor="middle" font-size="14" fill="#334155" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">读取</text>
+<text data-kind="relation-label" data-relation-id="state-save" x="802" y="496" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">保存</text>
+<text data-kind="relation-label" data-relation-id="state-restore" x="802" y="577" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">恢复</text>
+<text data-kind="relation-label" data-relation-id="running-events" x="330" y="798" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">投射</text>
+<text data-kind="relation-label" data-relation-id="events-filter" x="620" y="798" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">读取</text>
+<text data-kind="relation-label" data-relation-id="filter-ui" x="925" y="798" text-anchor="middle" font-size="14" fill="#059669" style="paint-order:stroke;stroke:#FFFFFF;stroke-width:5;stroke-linejoin:round">发布</text>
+<text data-kind="annotation" x="30" y="106" text-anchor="start" font-size="13" fill="#526075">紫：配置供给     灰：调用与读取     绿：结果与状态</text>
+<text data-kind="annotation" x="70" y="333" text-anchor="start" font-size="15" fill="#526075">字段仍可能被注入 Prompt、工具结果或日志，Context 本身不保证保密</text>
+<text data-kind="annotation" x="70" y="615" text-anchor="start" font-size="15" fill="#526075">状态连续性不等于身份认证或长期记忆治理；MemorySaver 仅保存在进程内存中</text>
+<text data-kind="annotation" x="70" y="900" text-anchor="start" font-size="15" fill="#526075">停止读取事件 ≠ 取消底层运行</text>
+<text data-kind="annotation" x="30" y="975" text-anchor="start" font-size="15" fill="#526075">各区独立表达消费关系，区与区之间不表示执行先后</text>
+</g>
+</svg>
