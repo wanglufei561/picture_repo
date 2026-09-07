@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-label="LangGraph 在 Workflow 与 Agent 系统中的责任覆盖">
+<defs>
+<marker id="arrow-control" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#334155"/></marker>
+<marker id="arrow-data" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#059669"/></marker>
+<marker id="arrow-config" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#7C3AED"/></marker>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033}.title{font-size:30px;font-weight:650}.subtitle{font-size:16px;fill:#526075}.region{font-size:20px;font-weight:600;fill:#334155}.label{font-size:19px;font-weight:600}.small{font-size:16px;fill:#526075}.relation{font-size:15px;fill:#526075}</style>
+</defs>
+<text x="40" y="50" class="title" text-anchor="start">LangGraph 在 Workflow 与 Agent 系统中的责任覆盖</text>
+<text x="40" y="82" class="subtitle" text-anchor="start">认知模型：核心承接状态化编排，节点接口与图外责任需要分开看</text>
+<g data-kind="container" data-id="core"><rect x="40" y="120" width="1120" height="180" rx="22" fill="#EEF6FF" stroke="#93BFFC" stroke-width="1.5"/>
+<text x="68" y="156" class="region" text-anchor="start">核心承接 · Stateful Orchestration</text>
+<text x="1132" y="156" class="small" text-anchor="end">显式状态转换 · 调度 · 运行连续性</text>
+</g>
+<g data-kind="node" data-id="protocol" data-container="core"><rect x="80" y="190" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="230.0" y="218.5" class="label" text-anchor="middle">State + Node</text>
+<text x="230.0" y="246.5" class="small" text-anchor="middle">状态契约 · 状态转换</text>
+</g>
+<g data-kind="node" data-id="transfer" data-container="core"><rect x="450" y="190" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="600.0" y="218.5" class="label" text-anchor="middle">Edge / Command</text>
+<text x="600.0" y="246.5" class="small" text-anchor="middle">下一跳 · 分支 · 循环</text>
+</g>
+<g data-kind="node" data-id="continuity" data-container="core"><rect x="820" y="190" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#93BFFC" stroke-width="1.6"/>
+<text x="970.0" y="218.5" class="label" text-anchor="middle">Checkpoint + Graph Runtime</text>
+<text x="970.0" y="246.5" class="small" text-anchor="middle">保存现场 · 调度与恢复</text>
+</g>
+<g data-kind="container" data-id="partial"><rect x="40" y="330" width="1120" height="180" rx="22" fill="#F3EFFF" stroke="#B6A0ED" stroke-width="1.5"/>
+<text x="68" y="366" class="region" text-anchor="start">节点接入 · 提供协作接口和控制点</text>
+<text x="1132" y="366" class="small" text-anchor="end">应用仍需提供具体内容与规则</text>
+</g>
+<g data-kind="node" data-id="context" data-container="partial"><rect x="80" y="400" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B6A0ED" stroke-width="1.6"/>
+<text x="230.0" y="428.5" class="label" text-anchor="middle">上下文接口</text>
+<text x="230.0" y="456.5" class="small" text-anchor="middle">State · Messages</text>
+</g>
+<g data-kind="node" data-id="decision" data-container="partial"><rect x="450" y="400" width="300" height="70" rx="14" fill="#FFFFFF" stroke="#B6A0ED" stroke-width="1.6"/>
+<text x="600.0" y="428.5" class="label" text-anchor="middle">决策与动作接口</text>
+<text x="600.0" y="456.5" class="small" text-anchor="middle">Node · ToolNode</text>
+</g>
+<g data-kind="node" data-id="governance" data-container="partial"><rect x="820" y="400" width="300" height="70" rx="14" fill="#FFF7ED" stroke="#EAB47C" stroke-width="1.6"/>
+<text x="970.0" y="428.5" class="label" text-anchor="middle">治理控制点</text>
+<text x="970.0" y="456.5" class="small" text-anchor="middle">Interrupt · Streaming</text>
+</g>
+<g data-kind="container" data-id="outside"><rect x="40" y="540" width="1120" height="200" rx="22" fill="#F0FDF7" stroke="#89D3B5" stroke-width="1.5"/>
+<text x="68" y="576" class="region" text-anchor="start">图外闭环 · 不由图替代</text>
+<text x="1132" y="576" class="small" text-anchor="end">责任必须有明确所有者</text>
+</g>
+<g data-kind="node" data-id="goal" data-container="outside"><rect x="80" y="610" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="195.0" y="648.5" class="label" text-anchor="middle">目标与验收</text>
+<text x="195.0" y="676.5" class="small" text-anchor="middle">应用 · 业务责任人</text>
+</g>
+<g data-kind="node" data-id="model" data-container="outside"><rect x="350" y="610" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="465.0" y="648.5" class="label" text-anchor="middle">模型智能</text>
+<text x="465.0" y="676.5" class="small" text-anchor="middle">LLM 的知识与判断</text>
+</g>
+<g data-kind="node" data-id="effects" data-container="outside"><rect x="620" y="610" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="735.0" y="648.5" class="label" text-anchor="middle">真实副作用</text>
+<text x="735.0" y="676.5" class="small" text-anchor="middle">工具 · 执行环境</text>
+</g>
+<g data-kind="node" data-id="auth" data-container="outside"><rect x="890" y="610" width="230" height="90" rx="14" fill="#FFFFFF" stroke="#89D3B5" stroke-width="1.6"/>
+<text x="1005.0" y="648.5" class="label" text-anchor="middle">身份与授权</text>
+<text x="1005.0" y="676.5" class="small" text-anchor="middle">身份系统 · 策略</text>
+</g>
+</svg>
