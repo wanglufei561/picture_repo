@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="780" viewBox="0 0 1600 780">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#63748c"/></marker></defs>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#17243b}.title{font-size:32px;font-weight:650}.head{font-size:26px;font-weight:600}.body{font-size:21px}.small{font-size:18px;fill:#52647d}.line{fill:none;stroke:#63748c;stroke-width:2.5;marker-end:url(#arrow)}</style>
+<text x="60" y="54" class="title">子代理委派：过程独立，输入与结果显式交接</text>
+<text x="60" y="92" class="body">默认 isolated 模式的消息关系，与共享文件的联系是两条不同的数据路径</text>
+<rect x="60" y="146" width="470" height="340" rx="20" fill="#f1f5fd" stroke="#c4d2eb" stroke-width="1.5"/>
+<rect x="1040" y="146" width="500" height="340" rx="20" fill="#f4f0fc" stroke="#d5c6ec" stroke-width="1.5"/>
+<text x="90" y="194" class="head">主 Agent 的消息上下文</text>
+<text x="1070" y="194" class="head">Subagent 的消息上下文</text>
+<text x="90" y="252" class="body">用户目标与主对话</text>
+<text x="90" y="299" class="body">主工具结果与 Todo 计划</text>
+<text x="90" y="346" class="body">收到报告后核对、汇总</text>
+<text x="90" y="438" class="small">负责提供任务材料与验收条件</text>
+<text x="1070" y="252" class="body">本次 description + 自己的提示</text>
+<text x="1070" y="299" class="body">模型 → 工具 → 结果 → 模型</text>
+<text x="1070" y="346" class="body">内部读取过程留在子消息中</text>
+<text x="1070" y="438" class="small">返回报告，不自动复制全部历史</text>
+<path class="line" d="M540 245H1026"/>
+<text x="595" y="211" class="body">task：类型 + 任务描述</text>
+<path class="line" d="M1030 395H542"/>
+<text x="575" y="369" class="body">ToolMessage：报告 + 调用 ID</text>
+<text x="591" y="295" class="small">主对话不自动传入</text>
+<text x="591" y="325" class="small">下次委派需重新交接</text>
+<rect x="320" y="601" width="960" height="95" rx="20" fill="#fff8e9" stroke="#e9cf94" stroke-width="1.5"/>
+<text x="348" y="640" class="head">文件联系：同一 Backend / 可传递的 files 状态</text>
+<text x="348" y="673" class="small">可以访问共享资料或回填文件更新，实际能力仍取决于工具、存储与权限</text>
+<path class="line" marker-start="url(#arrow)" d="M420 493V590"/>
+<path class="line" marker-start="url(#arrow)" d="M1160 493V590"/>
+<text x="75" y="548" class="small">主代理按权限读写</text>
+<text x="1190" y="548" class="small">子代理按权限读写</text>
+<text x="320" y="746" class="head">消息隔离 ≠ 文件隔离 ≠ 独立进程或 Sandbox</text>
+</svg>
