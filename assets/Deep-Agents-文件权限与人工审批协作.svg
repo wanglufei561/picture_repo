@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#63748c"/></marker>
+    <marker id="red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#ac5960"/></marker>
+    <style>
+      text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#17243b}
+      .title{font-size:36px;font-weight:650}.label{font-size:26px;font-weight:600}.body{font-size:22px}.small{font-size:20px;fill:#52617a}
+      .line{fill:none;stroke:#63748c;stroke-width:2.4;marker-end:url(#arrow)}
+      .reject{fill:none;stroke:#ac5960;stroke-width:2.4;marker-end:url(#red)}
+      .box{stroke:#d8e0ec;stroke-width:1.5;rx:18}
+    </style>
+  </defs>
+  <text x="60" y="68" class="title">文件权限与人工审批如何协作</text>
+  <text x="60" y="112" class="body">权限限定可执行范围，审批确认本次行动；批准之后仍需通过文件工具的规则检查</text>
+
+  <rect class="box" x="60" y="190" width="290" height="180" fill="#f1f5fd"/>
+  <text x="84" y="230" class="small">01 · 提议行动</text>
+  <text x="84" y="274" class="label">模型提出 Tool Call</text>
+  <text x="84" y="315" class="body">write_file + 路径 + 内容</text>
+  <text x="84" y="348" class="small">此时尚未执行文件写入</text>
+
+  <rect class="box" x="430" y="190" width="380" height="180" fill="#f4f0fc"/>
+  <text x="454" y="230" class="small">02 · 审阅具体调用</text>
+  <text x="454" y="274" class="label">HITL Middleware</text>
+  <text x="454" y="315" class="body">interruptOn 命中后暂停</text>
+  <text x="454" y="348" class="small">批准 / 修改 / 拒绝由人选择</text>
+
+  <rect class="box" x="900" y="190" width="280" height="180" fill="#fff8e9"/>
+  <text x="924" y="230" class="small">03 · 检查执行范围</text>
+  <text x="924" y="274" class="label">文件工具权限检查</text>
+  <text x="924" y="315" class="body">operations + paths</text>
+  <text x="924" y="348" class="small">首条命中，allow / deny</text>
+
+  <rect class="box" x="1250" y="190" width="280" height="180" fill="#f1f5fd"/>
+  <text x="1274" y="230" class="small">04 · 产生实际副作用</text>
+  <text x="1274" y="274" class="label">Backend 执行写入</text>
+  <text x="1274" y="315" class="body">State 或受控文件目录</text>
+  <text x="1274" y="348" class="small">工具回传执行结果</text>
+
+  <path class="line" d="M350 270 H430"/>
+  <path class="line" d="M810 270 H900"/>
+  <text x="846" y="160" text-anchor="middle" class="small">批准 / 修改后</text>
+  <path class="line" d="M1180 270 H1250"/>
+  <text x="1215" y="174" text-anchor="middle" class="small">allow</text>
+
+  <rect class="box" x="430" y="500" width="380" height="150" fill="#f4f0fc"/>
+  <text x="454" y="540" class="label">用户与应用审批入口</text>
+  <text x="454" y="581" class="body">展示工具、目标与完整参数</text>
+  <text x="454" y="618" class="small">校验 Thread、暂停 ID 与决定</text>
+  <path class="line" d="M485 370 V500"/>
+  <text x="474" y="434" text-anchor="end" class="small">待审请求</text>
+  <path class="line" d="M710 500 V370"/>
+  <text x="698" y="430" text-anchor="end" class="small">Command</text>
+  <text x="698" y="458" text-anchor="end" class="small">resume</text>
+
+  <rect class="box" x="900" y="500" width="280" height="150" fill="#f8fafc"/>
+  <text x="924" y="540" class="label">Checkpointer</text>
+  <text x="924" y="581" class="body">承载状态与暂停点</text>
+  <text x="924" y="618" class="small">恢复沿用同一 thread_id</text>
+  <path class="line" stroke-dasharray="7 6" d="M780 370 V410 H1020 V500"/>
+  <text x="1040" y="448" class="small">保存 / 恢复</text>
+
+  <rect class="box" x="60" y="750" width="1470" height="100" fill="#f8fafc"/>
+  <text x="84" y="793" class="label">Tool Result 回到 Agent Loop</text>
+  <text x="84" y="828" class="body">审批拒绝、权限错误或执行结果进入后续模型请求，模型据此修正行动或形成答复</text>
+  <path class="reject" d="M810 340 H850 V398 M850 422 V750"/>
+  <text x="838" y="694" text-anchor="end" class="small">reject：跳过工具</text>
+  <path class="reject" d="M1140 370 V425 H1220 V750"/>
+  <text x="1208" y="694" text-anchor="end" class="small">deny：返回权限错误</text>
+  <path class="line" d="M1450 370 V750"/>
+  <text x="1438" y="694" text-anchor="end" class="small">执行结果</text>
+  <path class="line" d="M60 790 H28 V285 H60"/>
+  <text x="60" y="892" class="small">边界：文件工具权限不自动覆盖自定义工具、直接后端访问或任意命令；身份与审批资格仍由应用负责</text>
+</svg>
